@@ -1,0 +1,58 @@
+﻿@model List<TPS.Models.StaffMember>
+
+@{
+    ViewBag.Title = "Staff Members";
+}
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        @TempData["Message"]
+    </div>
+}
+
+<h3>@ViewBag.Title</h3>
+
+<div class="pull-right">
+    <a href="@Url.Action("Add")" class="btn btn-success btn-sm">
+        <span class="glyphicon glyphicon-plus-sign"></span><span class="hidden-xs"> New Staff Member</span>
+    </a>
+</div>
+
+<table class="table">
+    <tr>
+        <th>Staff Member ID</th>
+        <th>Staff Member Name</th>
+        <th class="hidden-xs">Actions</th>
+        <th>&nbsp;</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Name</td>
+            <td>
+                <div class="pull-right">
+                    <a href="@Url.Action("Edit", new { id = item.ID })" class="btn btn-warning btn-sm margin-right">
+                        <span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Edit</span>
+                    </a>
+                    <a href="@Url.Action("Delete", new { id = item.ID })" class="btn btn-danger btn-sm">
+                        <span class="glyphicon glyphicon-trash"></span><span class="hidden-xs"> Delete</span>
+                    </a>
+                </div>
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="pull-right">
+    <a href="@Url.Action("Add")" class="btn btn-success btn-sm">
+        <span class="glyphicon glyphicon-plus-sign"></span><span class="hidden-xs">New Staff Membe</span>
+    </a>
+</div>
+
+
+

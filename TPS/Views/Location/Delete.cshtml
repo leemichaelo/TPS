@@ -1,0 +1,48 @@
+﻿@model TPS.Models.Location
+
+@{
+    ViewBag.Title = "Delete Location";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="alert alert-danger">
+    Are you sure you want to delete the following Location?
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                @Html.LabelFor(m => m.Name)
+            </div>
+            <div class="col-xs-8 col-sm-9">
+                @Model.Name
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                @Html.LabelFor(m => m.Address)
+            </div>
+            <div class="col-xs-8 col-sm-9">
+                @Model.Address
+            </div>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            <div class="pad-top">
+                <button type="submit" class="btn btn-danger btn-lg margin-right">
+                    <span class="glyphicon glyphicon-trash"></span> Delete
+                </button>
+                <a href="@Url.Action("Index")" class="btn btn-warning btn-lg">
+                    <span class="glyphicon glyphicon-remove"></span> Cancel
+                </a>
+            </div>
+        }
+
+    </div>
+
+</div>

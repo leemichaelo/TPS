@@ -1,7 +1,9 @@
-﻿using Microsoft.Owin;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin;
 using Owin;
+using TPS.Models;
 
-[assembly: OwinStartupAttribute(typeof(TPS.Startup))]
 namespace TPS
 {
     public partial class Startup

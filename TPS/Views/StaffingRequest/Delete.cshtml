@@ -1,0 +1,93 @@
+﻿@model TPS.Models.StaffingRequest
+
+@{
+    ViewBag.Title = "Delete Staffing Request";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="alert alert-danger">
+    Are you sure you want to delete the following Staffing Request?
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                @Html.LabelFor(m => m.RequestNumber)
+            </div>
+            <div class="col-xs-8 col-sm-9">
+                @Model.RequestNumber
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                @Html.LabelFor(m => m.ContractNumber)
+            </div>
+            <div class="col-xs-8 col-sm-9">
+                @Model.ContractNumber
+            </div>
+        </div>
+
+        <div class="row">
+            @foreach (var item in Model.StaffMembers)
+            {
+                <div class="col-xs-4 col-sm-3">
+                    <label>@item.Name</label>
+                </div>
+            }
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                @Html.LabelFor(m => m.ContractManager)
+            </div>
+            <div class="col-xs-8 col-sm-9">
+                @Model.ContractManager
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                @Html.LabelFor(m => m.ID)
+            </div>
+            <div class="col-xs-8 col-sm-9">
+                @Model.ID
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                @Html.LabelFor(m => m.TypeOfWork)
+            </div>
+            <div class="col-xs-8 col-sm-9">
+                @Model.TypeOfWork
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4 col-sm-3">
+                @Html.LabelFor(m => m.Salary)
+            </div>
+            <div class="col-xs-8 col-sm-9">
+                @Model.Salary
+            </div>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            <div class="pad-top">
+                <button type="submit" class="btn btn-danger btn-lg margin-right">
+                    <span class="glyphicon glyphicon-trash"></span> Delete
+                </button>
+                <a href="@Url.Action("Index")" class="btn btn-warning btn-lg">
+                    <span class="glyphicon glyphicon-remove"></span> Cancel
+                </a>
+            </div>
+        }
+
+    </div>
+
+</div>

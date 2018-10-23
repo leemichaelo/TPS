@@ -1,0 +1,86 @@
+﻿@model TPS.Models.StaffMember
+@using TPS.Models
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary("The following errors were found: ", new { @class = "alert alert-danger" })
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.RequestNumber, new { @class = "control-label" }):
+                @Html.DisplayFor(m => m.RequestNumber, new { @class = "control-label" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ID, new { @class = "control-label" }):
+                @Html.DisplayFor(m => m.ID, new { @class = "control-label" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Client.Name, new { @class = "control-label" }):
+                @Html.TextBoxFor(m => m.Client.Name, new { @class = "control-label" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Client.Password, new { @class = "control-label" }):
+                @Html.TextBoxFor(m => m.Client.Password, new { @class = "control-label" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Client.ConfirmPassword, new { @class = "control-label" }):
+                @Html.TextBoxFor(m => m.Client.ConfirmPassword, new { @class = "control-label" })
+            </div>
+
+            <div class="form-group">
+                <label>Staff Members:</label>
+                @if (Model.StaffMembers != null)
+                {
+                    for (var i = 0; i < Model.StaffMembers.Count(); i++)
+                    {
+                        <br />
+                        @Html.HiddenFor(model => model.StaffMembers[i].ID)
+                        @Html.CheckBoxFor(model => model.StaffMembers[i].Selected)
+                        @Html.LabelFor(model => model.StaffMembers[i].Selected, Model.StaffMembers[i].Name)
+                    }
+                }
+                else
+                {
+                    <p>There are no available staff members!</p>
+                }
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ContractManager, new { @class = "control-label" }):
+                @Html.DisplayFor(m => m.ContractManager.Name, new { @class = "control-label" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Location, new { @class = "control-label" }):
+                @Html.DisplayFor(m => m.ContractManager.Name, new { @class = "control-label" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.TypeOfWork, new { @class = "control-label" }):
+                @Html.TextBoxFor(m => m.TypeOfWork, new { @class = "control-form" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Salary, new { @class = "control-label" }):
+                @Html.TextBoxFor(m => m.Salary, new { @class = "control-form" })
+            </div>
+
+            <div class="col-md-12">
+                <div class="pad-top">
+                    <a href="@Url.Action("Index")" class="btn btn-warning btn-lg">
+                        <span class="glyphicon glyphicon-remove"></span> Cancel
+                    </a>
+                    <button type="submit" class="btn btn-success btn-lg margin-right">
+                        <span class="glyphicon glyphicon-save"></span> Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
